@@ -180,15 +180,17 @@ class OpenAPILLM(AbstractLLM):
             )
             acumulador = ""
             async for chunk in stream:
+                
                 contenido = chunk.choices[0].delta.content
                 if contenido is not None:
                     acumulador += contenido
-
                     if contenido.endswith('*') and len(acumulador) > 1:
-                        acumulador = acumulador[:-1]  
+                        acumulador = acumulador.replace('*', '')
                         await websocket.send_text(acumulador)
                         acumulador = ""  
             if acumulador:
+                #eliminar cualquier asterico que salga
+                acumulador = acumulador.replace('*', '')
                 await websocket.send_text(acumulador)
 
             await websocket.send_text("[DONE]")
