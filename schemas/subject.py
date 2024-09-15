@@ -9,11 +9,8 @@ class SubjectSchema:
 
     def get_subjects(self):
         subjects = self.mongo.get_collection("subjects")
-<<<<<<< HEAD
         if not subjects:
             return []
-=======
->>>>>>> upstream/zapataLuis
         for subject in subjects:
             subject['id'] = str(subject.pop('_id'))
             self.subjects.append(Subject(**subject))
