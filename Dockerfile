@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["python", "main.py"]
+CMD ["uvicorn", "app:app", "--host", ${HOST}, "--port", ${PORT}]
