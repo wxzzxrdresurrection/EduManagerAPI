@@ -2,7 +2,7 @@ from pydantic import BaseModel
 import datetime
 
 class Role(BaseModel):
-    id: int
+    id: str
     name: str
     description: str
     created_at: datetime.datetime

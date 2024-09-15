@@ -2,7 +2,7 @@ from pydantic import BaseModel
 import datetime
 
 class User(BaseModel):
-    id: int
+    id: str
     name: str
     email: str
     password: str
