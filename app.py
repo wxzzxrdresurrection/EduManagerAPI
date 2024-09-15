@@ -11,6 +11,7 @@ from routers.student import students
 from routers.period import periods
 from routers.group import groups
 from routers.schedule import schedules
+from routers.attendance import attendances
 
 app = FastAPI(
     title="EduManagerAPI",
@@ -33,4 +34,5 @@ app.include_router(students, prefix="/student", tags=["student"])
 app.include_router(periods, prefix="/period", tags=["period"])
 app.include_router(groups, prefix="/group", tags=["group"])
 app.include_router(schedules, prefix="/schedule", tags=["schedule"])
+app.include_router(attendances, prefix="/attendance", tags=["attendance"])
 

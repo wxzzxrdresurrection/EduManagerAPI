@@ -84,3 +84,31 @@ class MongoConnection:
         except Exception as e:
             print(f"Error fetching item {value} from collection {collection_name}: {e}")
             return None
+        
+    def insert_many_items_into_collection(self, collection_name, items):
+        """Inserta varios items en una colección MongoDB."""
+        try:
+            collection = self.db[collection_name]
+            new_items = collection.insert_many(items)
+            if not new_items.inserted_ids:
+                raise HTTPException(status_code=500, detail="Error inserting items into collection")
+            return "Items inserted successfully"
+        except Exception as e:
+            print(f"Error inserting items into collection {collection_name}: {e}")
+            return None
+        
+    def find_items_by_field(self, collection_name, field_name, value):
+        try:
+            collection = self.db[collection_name]
+            # Utilizamos find para obtener todos los documentos que coincidan con el valor del campo
+            results = collection.find({field_name: value})
+            # Convertimos el cursor en una lista de diccionarios
+            documents = []
+            for result in results:
+                result['id'] = str(result.pop('_id'))
+                documents.append(result)
+            return documents
+        except Exception as e:
+            print(f"Error fetching documents: {e}")
+            return []
+
