@@ -46,9 +46,14 @@ class OpenAPILLM(AbstractLLM):
                 """
             ),
             system_message(
-                """"Prioriza la claridad y la precisión en tus respuestas. Asegúrate de que todas las palabras estén completas y correctamente escritas."
+                """Prioriza la claridad y la precisión en tus respuestas. Asegúrate de que todas las palabras estén completas y correctamente escritas.
                 """
             ),
+            system_message(
+                """Agrega un '*' al final de cada mensaje para indicar que la respuesta está completa.
+                """
+            ),
+            
 
             system_message("There are 30 students in the class"),
             system_message(str(
@@ -95,8 +100,11 @@ class OpenAPILLM(AbstractLLM):
                 stream=True,
             )
             async for chunk in stream:
+                word = ""
                 if chunk.choices[0].delta.content is not None:
-                    await websocket.send_text(chunk.choices[0].delta.content)
+                    word = word + chunk.choices[0].delta.content
+                    if chunk.choices[0].delta.content.endswith("*"):
+                        await websocket.send_text(word)
             await websocket.send_text("[DONE]")
         except RateLimitError as e:
             await websocket.send_text("Rate limit exceeded. Please wait and try again later.")
