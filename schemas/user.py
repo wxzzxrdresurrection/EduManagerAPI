@@ -1,7 +1,6 @@
 from bson import ObjectId
 from config.db import MongoConnection
-from models.user_model import authenticate_user
-
+from models.user_model import authenticate_user, create_access_token
 class UserSchema:
     def __init__(self):
         self.mongo = MongoConnection()
@@ -9,6 +8,8 @@ class UserSchema:
 
     def get_users(self):
         users = self.mongo.get_collection("users")
+        if not users:
+            return []
         for user in users:
             user['id'] = str(user.pop('_id'))
             self.users.append(user)
@@ -23,5 +24,9 @@ class UserSchema:
         return data
     
     def login(self, user):
-        user = authenticate_user(self.mongo, user.email, user.password)
-        return user
+        user, message = authenticate_user(self.mongo, user.email, user.password)
+        if user:     
+            token = create_access_token(user)
+        else:
+            token = ""
+        return user, message, token

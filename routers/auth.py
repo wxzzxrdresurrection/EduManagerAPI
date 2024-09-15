@@ -6,8 +6,9 @@ auth = APIRouter()
 
 @auth.post("/login", response_model=dict, status_code=200)
 async def login(user: UserLogin):
-    info = UserSchema().login(user)
+    info, message, token = UserSchema().login(user)
+    info["token"] = token
     return {
         "data": info,
-        "message": "Login successful"
+        "message": message
     }
