@@ -85,10 +85,86 @@ class OpenAPILLM(AbstractLLM):
                         },
                         "tasks": [
                             {"name": "Science Project", "score": 70, "status": "Completed"},
-                            {"name": "History Report", "score": None, "status": "Overdue"}
+                            {"name": "History Report", "score": null, "status": "Overdue"}
+                        ]
+                    },
+                    "3": {
+                        "name": "Alice Carter",
+                        "overview": {
+                            "engagement_level": "High",
+                            "progress": "Above Average"
+                        },
+                        "psychological_state": {
+                            "emotional_wellbeing": "Stable",
+                            "stress_level": "Low"
+                        },
+                        "tasks": [
+                            {"name": "Math Assignment", "score": 85, "status": "Completed"},
+                            {"name": "English Essay", "score": 90, "status": "Completed"}
+                        ]
+                    },
+                    "4": {
+                        "name": "David Lee",
+                        "overview": {
+                            "engagement_level": "Moderate",
+                            "progress": "Average"
+                        },
+                        "psychological_state": {
+                            "emotional_wellbeing": "Neutral",
+                            "stress_level": "Moderate"
+                        },
+                        "tasks": [
+                            {"name": "Physics Lab", "score": 75, "status": "Completed"},
+                            {"name": "Geography Presentation", "score": null, "status": "Pending"}
+                        ]
+                    },
+                    "5": {
+                        "name": "Karen Thompson",
+                        "overview": {
+                            "engagement_level": "Low",
+                            "progress": "Below Average"
+                        },
+                        "psychological_state": {
+                            "emotional_wellbeing": "Anxious",
+                            "stress_level": "High"
+                        },
+                        "tasks": [
+                            {"name": "Chemistry Test", "score": 65, "status": "Completed"},
+                            {"name": "Art Project", "score": null, "status": "Overdue"}
+                        ]
+                    },
+                    "6": {
+                        "name": "John Smith",
+                        "overview": {
+                            "engagement_level": "High",
+                            "progress": "Above Average"
+                        },
+                        "psychological_state": {
+                            "emotional_wellbeing": "Stable",
+                            "stress_level": "Low"
+                        },
+                        "tasks": [
+                            {"name": "Biology Quiz", "score": 92, "status": "Completed"},
+                            {"name": "History Essay", "score": 88, "status": "Completed"}
+                        ]
+                    },
+                    "7": {
+                        "name": "Emily Davis",
+                        "overview": {
+                            "engagement_level": "Moderate",
+                            "progress": "Average"
+                        },
+                        "psychological_state": {
+                            "emotional_wellbeing": "Content",
+                            "stress_level": "Moderate"
+                        },
+                        "tasks": [
+                            {"name": "Music Theory", "score": 80, "status": "Completed"},
+                            {"name": "Physical Education", "score": null, "status": "Pending"}
                         ]
                     }
-                }
+                }   
+                            
             )),
         ]+
         [user_message(message['content']) for message in messages]
