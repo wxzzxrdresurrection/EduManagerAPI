@@ -50,12 +50,13 @@ class OpenAPILLM(AbstractLLM):
                 """
             ),
             system_message(
-                """Agrega un '*' al final de cada mensaje para indicar que la respuesta está completa.
+                """Agrega un '*' al final de cada palabra, para tener una forma de darme cuenta que completaste la palabra 
                 """
             ),
             
 
             system_message("There are 30 students in the class"),
+            system_message(str(
             system_message(str(
                 {
                     "1": {
@@ -166,6 +167,8 @@ class OpenAPILLM(AbstractLLM):
                 }   
                             
             )),
+
+            )),
         ]+
         [user_message(message['content']) for message in messages]
         )
@@ -175,12 +178,17 @@ class OpenAPILLM(AbstractLLM):
                 messages=formatted_messages,
                 stream=True,
             )
+            acumulador = ""
             async for chunk in stream:
-                word = ""
-                if chunk.choices[0].delta.content is not None:
-                    word = word + chunk.choices[0].delta.content
-                    if chunk.choices[0].delta.content.endswith("*"):
-                        await websocket.send_text(word)
+                contenido = chunk.choices[0].delta.content
+                if contenido is not None:
+                    acumulador += contenido
+                    if contenido.endswith('*'):
+                        await websocket.send_text(acumulador)
+                        acumulador = ""  # Reiniciamos el acumulador una vez enviado
+            if acumulador:
+                await websocket.send_text(acumulador)
+
             await websocket.send_text("[DONE]")
         except RateLimitError as e:
             await websocket.send_text("Rate limit exceeded. Please wait and try again later.")
