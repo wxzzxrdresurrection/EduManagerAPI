@@ -181,8 +181,6 @@ class OpenAPILLM(AbstractLLM):
             acumulador = ""
             async for chunk in stream:
                 contenido = chunk.choices[0].delta.content
-                if contenido is "*"
-                    contenido = ""
                 if contenido is not None:
                     acumulador += contenido
                     if contenido.endswith('*'):
