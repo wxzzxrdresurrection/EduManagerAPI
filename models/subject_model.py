@@ -2,7 +2,7 @@ from pydantic import BaseModel
 import datetime
 
 class Subject(BaseModel):
-    id: int
+    id: str
     name: str
     description: str
     units: list
