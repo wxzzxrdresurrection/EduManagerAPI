@@ -6,6 +6,13 @@ subject = APIRouter()
 
 @subject.get("", response_model=dict)
 async def get_all_subjects():
+    mongo_instance = MongoConnection()
+
+    # Probar la conexión a MongoDB
+    if mongo_instance.test_connection():
+        print("Conexión a MongoDB verificada.")
+    else:
+        print("Error al conectar a MongoDB.")
     return {
         "data": [],
         "message": "Subjects retrieved successfully"
