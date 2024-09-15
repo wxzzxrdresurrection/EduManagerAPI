@@ -85,7 +85,7 @@ class OpenAPILLM(AbstractLLM):
                         },
                         "tasks": [
                             {"name": "Science Project", "score": 70, "status": "Completed"},
-                            {"name": "History Report", "score": null, "status": "Overdue"}
+                            {"name": "History Report", "score": 94, "status": "Overdue"}
                         ]
                     },
                     "3": {
@@ -115,7 +115,7 @@ class OpenAPILLM(AbstractLLM):
                         },
                         "tasks": [
                             {"name": "Physics Lab", "score": 75, "status": "Completed"},
-                            {"name": "Geography Presentation", "score": null, "status": "Pending"}
+                            {"name": "Geography Presentation", "score": None, "status": "Pending"}
                         ]
                     },
                     "5": {
@@ -130,7 +130,7 @@ class OpenAPILLM(AbstractLLM):
                         },
                         "tasks": [
                             {"name": "Chemistry Test", "score": 65, "status": "Completed"},
-                            {"name": "Art Project", "score": null, "status": "Overdue"}
+                            {"name": "Art Project", "score": 34, "status": "Overdue"}
                         ]
                     },
                     "6": {
@@ -160,7 +160,7 @@ class OpenAPILLM(AbstractLLM):
                         },
                         "tasks": [
                             {"name": "Music Theory", "score": 80, "status": "Completed"},
-                            {"name": "Physical Education", "score": null, "status": "Pending"}
+                            {"name": "Physical Education", "score": 93, "status": "Pending"}
                         ]
                     }
                 }   
