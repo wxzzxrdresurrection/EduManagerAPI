@@ -29,9 +29,10 @@ class OpenAPILLM(AbstractLLM):
     def __init__(self, api_key: str):
         self.client = AsyncOpenAI(api_key=api_key)
 
-    async def generate_response(self, messages: List[dict], websocket: WebSocket):
+    async def generate_response(self, messages: List[dict], websocket: WebSocket, extra_context: List[str] = []):
         formatted_messages: list[ChatCompletionMessageParam] = []
         formatted_messages.extend(
+            [system_message(message) for message in extra_context] +
         [
             system_message(
                 """Eres un asistente psicológico virtual diseñado para ayudar a los profesores a comprender y apoyar el bienestar emocional y el desempeño académico de sus estudiantes.
@@ -162,7 +163,6 @@ class OpenAPILLM(AbstractLLM):
                         ]
                     }
                 }
-
             )),
         ]+
         [user_message(message['content']) for message in messages]

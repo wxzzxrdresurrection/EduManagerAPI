@@ -26,8 +26,12 @@ async def test_ws(request: Request):
 @ws_router.websocket("")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
-    context = "Welcome! Here's an overview of your students: [Your students' overview here]"
-    await websocket.send_text(json.dumps({"type": "context", "content": context}))
+    prompt = "Resumen destacable del aula, puedes mencionar rendimiento general, quien destaca para bien o para mal"
+    context = {
+        "type": "user",
+        "content": prompt
+    }
+    await llm.generate_response([context], websocket)
 
     try:
         while True:
