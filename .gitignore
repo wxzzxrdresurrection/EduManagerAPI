@@ -1,0 +1,22 @@
+__pycache__
+.venv
+.env
+<<<<<<< HEAD
+*/__pycache__
+__pycache__
+*.pyc
+=======
+<<<<<<< HEAD
+=======
+.venv
+.env
+*/__pycache__
+__pycache__
+*.pyc
+>>>>>>> upstream/zapataLuis
+=======
+*/__pycache__
+__pycache__
+*.pyc
+>>>>>>> c141412 (feat: :sparkles: added subjects create, read all and read one by id)
+>>>>>>> 4eca9a5 (ammended)
