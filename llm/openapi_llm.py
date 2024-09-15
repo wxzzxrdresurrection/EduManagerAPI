@@ -183,10 +183,11 @@ class OpenAPILLM(AbstractLLM):
                 contenido = chunk.choices[0].delta.content
                 if contenido is not None:
                     acumulador += contenido
-                    if contenido.endswith('*'):
-                        acumulador = acumulador[:-1]  # Eliminamos el '*' del final
+
+                    if contenido.endswith('*') and len(acumulador) > 1:
+                        acumulador = acumulador[:-1]  
                         await websocket.send_text(acumulador)
-                        acumulador = ""  # Reiniciamos el acumulador una vez enviado
+                        acumulador = ""  
             if acumulador:
                 await websocket.send_text(acumulador)
 
