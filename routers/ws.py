@@ -26,7 +26,7 @@ async def test_ws(request: Request):
 @ws_router.websocket("")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
-    prompt = "Resumen destacable del aula, puedes mencionar rendimiento general, quien destaca para bien o para mal"
+    prompt = "Resumen destacable del aula, puedes mencionar rendimiento general, quien destaca para bien o para mal, que sea breve, ve al grano"
     context = {
         "type": "user",
         "content": prompt
