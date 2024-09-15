@@ -173,13 +173,15 @@ class OpenAPILLM(AbstractLLM):
                 messages=formatted_messages,
                 stream=True,
             )
-            full_response = ""
+            acumulador = ""
             async for chunk in stream:
-                
+
                 contenido = chunk.choices[0].delta.content
                 if contenido is not None:
                     acumulador += contenido
+
                     if contenido.endswith('*') and len(acumulador) > 1:
+                        acumulador = acumulador[:-1]  
                         acumulador = acumulador.replace('*', '')
                         await websocket.send_text(acumulador)
                         acumulador = ""  
