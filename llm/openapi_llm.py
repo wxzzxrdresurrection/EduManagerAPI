@@ -184,6 +184,7 @@ class OpenAPILLM(AbstractLLM):
                 if contenido is not None:
                     acumulador += contenido
                     if contenido.endswith('*'):
+                        acumulador = acumulador[:-1]  # Eliminamos el '*' del final
                         await websocket.send_text(acumulador)
                         acumulador = ""  # Reiniciamos el acumulador una vez enviado
             if acumulador:
