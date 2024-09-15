@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 __pycache__
 .venv
 .env
 */__pycache__
+=======
+.venv
+.env
+*/__pycache__
+__pycache__
+>>>>>>> upstream/zapataLuis
 *.pyc

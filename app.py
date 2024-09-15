@@ -4,6 +4,7 @@ load_dotenv()
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers.ws import ws_router
+from fastapi import FastAPI
 from routers.subject import subjects
 
 app = FastAPI(

@@ -2,7 +2,7 @@ from pydantic import BaseModel
 import datetime
 
 class Period(BaseModel):
-    id: int
+    id: str
     type: str
     start_date: datetime.date
     end_date: datetime.date
