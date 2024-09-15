@@ -7,6 +7,7 @@ from fastapi import FastAPI
 from routers.subject import subjects
 from routers.user import users
 from routers.auth import auth
+from routers.student import students
 
 app = FastAPI(
     title="EduManagerAPI",
@@ -25,3 +26,5 @@ app.include_router(subjects, prefix="/subject", tags=["subject"])
 app.include_router(users, prefix="/user", tags=["user"])
 app.include_router(auth, prefix="/auth", tags=["auth"])
 app.include_router(ws_router, prefix="/ws", tags=["ws"])
+app.include_router(students, prefix="/student", tags=["student"])
+
