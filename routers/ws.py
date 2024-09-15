@@ -20,7 +20,8 @@ llm = OpenAPILLM(api_key=apiKey)
 
 @ws_router.get("/test", response_class=HTMLResponse)
 async def test_ws(request: Request):
-    return templates.TemplateResponse("test_ws.html", {"request": request})
+    url = os.getenv("APP_URL", "localhost")
+    return templates.TemplateResponse("test_ws.html", {"request": request, "url": url})
 
 @ws_router.websocket("")
 async def websocket_endpoint(websocket: WebSocket):
