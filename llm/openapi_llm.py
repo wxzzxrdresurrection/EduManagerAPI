@@ -187,7 +187,9 @@ class OpenAPILLM(AbstractLLM):
                         Evita jerga técnica o términos psicológicos complejos que puedan resultar confusos.
                         Sé empático y comprensivo en tus respuestas, reconociendo los desafíos que enfrentan los profesores en el aula.
                         Si no tienes suficiente información para proporcionar una recomendación específica, sugiere al profesor que recopile más datos o busque apoyo adicional de un profesional de la salud mental."""
-                    )
+                    ),
+                    system_message(
+                        """Usa menos de 300 palabras de ser posible en la gran mayoria de casos tiene que ser consiso, claro y entendible para los profesores""")
     ]
     async def generate_response_sync(self, message: str, extra_context: List[str] = []):
         print(message)
