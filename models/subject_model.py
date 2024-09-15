@@ -2,7 +2,15 @@ from pydantic import BaseModel
 import datetime
 
 class Subject(BaseModel):
+<<<<<<< HEAD
+<<<<<<< HEAD
+    id: int
+=======
     id: str | None = None
+>>>>>>> c141412 (feat: :sparkles: added subjects create, read all and read one by id)
+=======
+    id: str | None = None
+>>>>>>> upstream/zapataLuis
     name: str
     description: str
     units: list

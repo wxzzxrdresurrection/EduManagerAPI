@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>WebSocket Test</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            #messageLog {
+                height: 300px;
+                overflow-y: scroll;
+                border: 1px solid #ccc;
+                padding: 10px;
+                margin-bottom: 20px;
+            }
+            #messageInput {
+                width: 70%;
+                padding: 5px;
+            }
+            #sendButton {
+                padding: 5px 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>WebSocket Test</h1>
+        <div id="messageLog"></div>
+        <input type="text" id="messageInput" placeholder="Type a message..." />
+        <button id="sendButton">Send</button>
+        <script>
+            const socket = new WebSocket("ws://localhost:8000/ws");
+            const messageLog = document.getElementById("messageLog");
+            const messageInput = document.getElementById("messageInput");
+            const sendButton = document.getElementById("sendButton");
+            let currentMessageElement = null; // To track the current message div
+
+            function createNewMessageDiv() {
+                currentMessageElement = document.createElement("div");
+                messageLog.appendChild(currentMessageElement);
+                messageLog.scrollTop = messageLog.scrollHeight; // Auto-scroll
+            }
+
+            socket.onopen = function (e) {
+                createNewMessageDiv();
+                currentMessageElement.textContent =
+                    "[open] Connection established";
+            };
+
+            socket.onmessage = function (event) {
+                const receivedMessage = event.data.trim();
+
+                if (receivedMessage === "[DONE]") {
+                    // Start a new div for the next message
+                    createNewMessageDiv();
+                } else {
+                    // Append incoming text to the current div
+                    currentMessageElement.textContent += receivedMessage + " ";
+                }
+
+                // Auto-scroll to the bottom
+                messageLog.scrollTop = messageLog.scrollHeight;
+            };
+
+            socket.onclose = function (event) {
+                if (event.wasClean) {
+                    currentMessageElement.textContent += `[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`;
+                } else {
+                    currentMessageElement.textContent +=
+                        "[close] Connection died";
+                }
+                messageLog.scrollTop = messageLog.scrollHeight;
+            };
+
+            socket.onerror = function (error) {
+                currentMessageElement.textContent += `[error] ${error.message}`;
+                messageLog.scrollTop = messageLog.scrollHeight;
+            };
+
+            sendButton.onclick = function () {
+                const message = messageInput.value;
+                socket.send(
+                    JSON.stringify({
+                        type: "message",
+                        content: [{ role: "user", content: message }],
+                    }),
+                );
+                createNewMessageDiv();
+                currentMessageElement.textContent = `Sent: ${message}`;
+                messageInput.value = "";
+            };
+        </script>
+    </body>
+</html>
