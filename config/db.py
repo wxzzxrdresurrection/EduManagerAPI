@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 import os
+from fastapi import HTTPException
 
 class MongoConnection:
     _instance = None  # Variable de clase para el patrón Singleton
@@ -60,7 +61,26 @@ class MongoConnection:
         """Inserta un item en una colección MongoDB."""
         try:
             collection = self.db[collection_name]
-            return collection.insert_one(item)
+            new_item = collection.insert_one(item)
+            if not new_item.inserted_id:
+                raise HTTPException(status_code=500, detail="Error inserting item into collection")
+            return "Item inserted successfully"
         except Exception as e:
             print(f"Error inserting item into collection {collection_name}: {e}")
+            return None
+        
+    def get_item_from_collection_by_key(self, collection_name, key, value):
+        """Devuelve un item de una colección MongoDB por su clave."""
+        try:
+            collection = self.db[collection_name]
+            item = collection.find_one({key: value})
+            if item:
+                item['id'] = str(item.pop('_id'))
+                return item
+            else:
+                print(f"Item {value} not found in collection {collection_name}")
+
+            return item 
+        except Exception as e:
+            print(f"Error fetching item {value} from collection {collection_name}: {e}")
             return None
