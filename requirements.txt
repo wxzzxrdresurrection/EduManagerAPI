@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 fastapi
 openai
-uvicorn
+uvicorn[standard]
 jinja2
-=======
->>>>>>> upstream/zapataLuis
 annotated-types==0.7.0
 anyio==4.4.0
 dnspython==2.6.1
