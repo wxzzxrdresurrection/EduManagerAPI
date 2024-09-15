@@ -48,12 +48,12 @@
 
             socket.onopen = function (e) {
                 createNewMessageDiv();
-                currentMessageElement.textContent =
-                    "[open] Connection established";
+                currentMessageElement.textContent = "Conexion establecida";
+                createNewMessageDiv();
             };
-
             socket.onmessage = function (event) {
                 const receivedMessage = event.data.trim();
+                console.log(receivedMessage);
 
                 if (receivedMessage === "[DONE]") {
                     // Start a new div for the next message
