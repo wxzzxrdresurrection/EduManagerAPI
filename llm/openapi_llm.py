@@ -11,7 +11,7 @@ from llm import system_message, user_message
 from llm.abstract_llm import AbstractLLM
 
 
-STUDENTS_STUB = {
+STUDENTS_STUB =  {
     "1": {
         "name": "Alice Smith",
         "overview": {
@@ -117,6 +117,382 @@ STUDENTS_STUB = {
             {"name": "Physical Education", "score": 93, "status": "Pending"}
         ]
     }
+}, {
+    "8": {
+        "name": "Michael Brown",
+        "overview": {
+            "engagement_level": "High",
+            "progress": "Above Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Stable",
+            "stress_level": "Low"
+        },
+        "tasks": [
+            {"name": "Math Assignment", "score": 95, "status": "Completed"},
+            {"name": "English Essay", "score": 88, "status": "Completed"}
+        ]
+    },
+    "9": {
+        "name": "Jessica Wilson",
+        "overview": {
+            "engagement_level": "Moderate",
+            "progress": "Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Content",
+            "stress_level": "Moderate"
+        },
+        "tasks": [
+            {"name": "Science Project", "score": 78, "status": "Completed"},
+            {"name": "History Report", "score": 82, "status": "Pending"}
+        ]
+    },
+    "10": {
+        "name": "Daniel Martinez",
+        "overview": {
+            "engagement_level": "Low",
+            "progress": "Below Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Anxious",
+            "stress_level": "High"
+        },
+        "tasks": [
+            {"name": "Physics Lab", "score": 60, "status": "Completed"},
+            {"name": "Geography Presentation", "score": 55, "status": "Overdue"}
+        ]
+    },
+    "11": {
+        "name": "Sarah Anderson",
+        "overview": {
+            "engagement_level": "High",
+            "progress": "Above Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Stable",
+            "stress_level": "Low"
+        },
+        "tasks": [
+            {"name": "Chemistry Test", "score": 90, "status": "Completed"},
+            {"name": "Art Project", "score": 85, "status": "Completed"}
+        ]
+    },
+    "12": {
+        "name": "James Taylor",
+        "overview": {
+            "engagement_level": "Moderate",
+            "progress": "Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Neutral",
+            "stress_level": "Moderate"
+        },
+        "tasks": [
+            {"name": "Biology Quiz", "score": 75, "status": "Completed"},
+            {"name": "History Essay", "score": 70, "status": "Pending"}
+        ]
+    },
+    "13": {
+        "name": "Laura Thomas",
+        "overview": {
+            "engagement_level": "Low",
+            "progress": "Below Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Unstable",
+            "stress_level": "High"
+        },
+        "tasks": [
+            {"name": "Math Assignment", "score": 50, "status": "Completed"},
+            {"name": "English Essay", "score": 45, "status": "Overdue"}
+        ]
+    },
+    "14": {
+        "name": "Christopher White",
+        "overview": {
+            "engagement_level": "High",
+            "progress": "Above Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Stable",
+            "stress_level": "Low"
+        },
+        "tasks": [
+            {"name": "Science Project", "score": 92, "status": "Completed"},
+            {"name": "History Report", "score": 88, "status": "Completed"}
+        ]
+    },
+    "15": {
+        "name": "Amanda Harris",
+        "overview": {
+            "engagement_level": "Moderate",
+            "progress": "Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Content",
+            "stress_level": "Moderate"
+        },
+        "tasks": [
+            {"name": "Physics Lab", "score": 80, "status": "Completed"},
+            {"name": "Geography Presentation", "score": 75, "status": "Pending"}
+        ]
+    },
+    "16": {
+        "name": "Joshua Clark",
+        "overview": {
+            "engagement_level": "Low",
+            "progress": "Below Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Anxious",
+            "stress_level": "High"
+        },
+        "tasks": [
+            {"name": "Chemistry Test", "score": 55, "status": "Completed"},
+            {"name": "Art Project", "score": 60, "status": "Overdue"}
+        ]
+    },
+    "17": {
+        "name": "Emily Lewis",
+        "overview": {
+            "engagement_level": "High",
+            "progress": "Above Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Stable",
+            "stress_level": "Low"
+        },
+        "tasks": [
+            {"name": "Biology Quiz", "score": 95, "status": "Completed"},
+            {"name": "History Essay", "score": 90, "status": "Completed"}
+        ]
+    },
+    "18": {
+        "name": "Matthew Robinson",
+        "overview": {
+            "engagement_level": "Moderate",
+            "progress": "Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Neutral",
+            "stress_level": "Moderate"
+        },
+        "tasks": [
+            {"name": "Math Assignment", "score": 78, "status": "Completed"},
+            {"name": "English Essay", "score": 80, "status": "Pending"}
+        ]
+    },
+    "19": {
+        "name": "Olivia Walker",
+        "overview": {
+            "engagement_level": "Low",
+            "progress": "Below Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Unstable",
+            "stress_level": "High"
+        },
+        "tasks": [
+            {"name": "Science Project", "score": 60, "status": "Completed"},
+            {"name": "History Report", "score": 55, "status": "Overdue"}
+        ]
+    },
+    "20": {
+        "name": "Andrew Hall",
+        "overview": {
+            "engagement_level": "High",
+            "progress": "Above Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Stable",
+            "stress_level": "Low"
+        },
+        "tasks": [
+            {"name": "Physics Lab", "score": 90, "status": "Completed"},
+            {"name": "Geography Presentation", "score": 85, "status": "Completed"}
+        ]
+    },
+    "21": {
+        "name": "Sophia Allen",
+        "overview": {
+            "engagement_level": "Moderate",
+            "progress": "Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Content",
+            "stress_level": "Moderate"
+        },
+        "tasks": [
+            {"name": "Chemistry Test", "score": 75, "status": "Completed"},
+            {"name": "Art Project", "score": 70, "status": "Pending"}
+        ]
+    },
+    "22": {
+        "name": "Ryan Young",
+        "overview": {
+            "engagement_level": "Low",
+            "progress": "Below Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Anxious",
+            "stress_level": "High"
+        },
+        "tasks": [
+            {"name": "Biology Quiz", "score": 50, "status": "Completed"},
+            {"name": "History Essay", "score": 45, "status": "Overdue"}
+        ]
+    },
+    "23": {
+        "name": "Grace King",
+        "overview": {
+            "engagement_level": "High",
+            "progress": "Above Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Stable",
+            "stress_level": "Low"
+        },
+        "tasks": [
+            {"name": "Math Assignment", "score": 92, "status": "Completed"},
+            {"name": "English Essay", "score": 88, "status": "Completed"}
+        ]
+    },
+    "24": {
+        "name": "Ethan Wright",
+        "overview": {
+            "engagement_level": "Moderate",
+            "progress": "Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Neutral",
+            "stress_level": "Moderate"
+        },
+        "tasks": [
+            {"name": "Science Project", "score": 78, "status": "Completed"},
+            {"name": "History Report", "score": 80, "status": "Pending"}
+        ]
+    },
+    "25": {
+        "name": "Chloe Scott",
+        "overview": {
+            "engagement_level": "Low",
+            "progress": "Below Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Unstable",
+            "stress_level": "High"
+        },
+        "tasks": [
+            {"name": "Physics Lab", "score": 55, "status": "Completed"},
+            {"name": "Geography Presentation", "score": 50, "status": "Overdue"}
+        ]
+    },
+    "26": {
+        "name": "Alexander Green",
+        "overview": {
+            "engagement_level": "High",
+            "progress": "Above Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Stable",
+            "stress_level": "Low"
+        },
+        "tasks": [
+            {"name": "Chemistry Test", "score": 90, "status": "Completed"},
+            {"name": "Art Project", "score": 85, "status": "Completed"}
+        ]
+    },
+    "27": {
+        "name": "Natalie Adams",
+        "overview": {
+            "engagement_level": "Moderate",
+            "progress": "Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Content",
+            "stress_level": "Moderate"
+        },
+        "tasks": [
+            {"name": "Biology Quiz", "score": 75, "status": "Completed"},
+            {"name": "History Essay", "score": 70, "status": "Pending"}
+        ]
+    },
+    "28": {
+        "name": "Benjamin Nelson",
+        "overview": {
+            "engagement_level": "Low",
+            "progress": "Below Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Anxious",
+            "stress_level": "High"
+        },
+        "tasks": [
+            {"name": "Math Assignment", "score": 50, "status": "Completed"},
+            {"name": "English Essay", "score": 45, "status": "Overdue"}
+        ]
+    },
+    "29": {
+        "name": "Hannah Baker",
+        "overview": {
+            "engagement_level": "High",
+            "progress": "Above Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Stable",
+            "stress_level": "Low"
+        },
+        "tasks": [
+            {"name": "Science Project", "score": 92, "status": "Completed"},
+            {"name": "History Report", "score": 88, "status": "Completed"}
+        ]
+    },
+    "30": {
+        "name": "Jacob Hill",
+        "overview": {
+            "engagement_level": "Moderate",
+            "progress": "Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Neutral",
+            "stress_level": "Moderate"
+        },
+        "tasks": [
+            {"name": "Physics Lab", "score": 80, "status": "Completed"},
+            {"name": "Geography Presentation", "score": 75, "status": "Pending"}
+        ]
+    },
+    "31": {
+        "name": "Samantha Moore",
+        "overview": {
+            "engagement_level": "Low",
+            "progress": "Below Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Unstable",
+            "stress_level": "High"
+        },
+        "tasks": [
+            {"name": "Chemistry Test", "score": 55, "status": "Completed"},
+            {"name": "Art Project", "score": 60, "status": "Overdue"}
+        ]
+    },
+    "32": {
+        "name": "William Perez",
+        "overview": {
+            "engagement_level": "High",
+            "progress": "Above Average"
+        },
+        "psychological_state": {
+            "emotional_wellbeing": "Stable",
+            "stress_level": "Low"
+        },
+        "tasks": [
+            {"name": "Biology Quiz", "score": 95, "status": "Completed"},
+            {"name": "History Essay", "score": 90, "status": "Completed"}
+        ]
+    }
 }
 
 def clean_json_string(json_string: str) -> str:
@@ -189,14 +565,16 @@ class OpenAPILLM(AbstractLLM):
                         Si no tienes suficiente información para proporcionar una recomendación específica, sugiere al profesor que recopile más datos o busque apoyo adicional de un profesional de la salud mental."""
                     ),
                     system_message(
-                        """Usa menos de 300 palabras de ser posible en la gran mayoria de casos tiene que ser consiso, claro y entendible para los profesores""")
+                        """Usa menos de 300 palabras de ser posible en la gran mayoria de casos tiene que ser consiso, claro y entendible para los profesores"""),
+                    system_message(str(STUDENTS_STUB))
     ]
     async def generate_response_sync(self, message: str, extra_context: List[str] = []):
         print(message)
         formatted_messages: list[ChatCompletionMessageParam] = []
         formatted_messages.extend(
             [system_message(message) for message in extra_context] +
-            self.json_promter
+            self.json_promter +
+            [system_message(str(STUDENTS_STUB))]
             + [user_message(message)]
         )
         try:
@@ -227,7 +605,6 @@ class OpenAPILLM(AbstractLLM):
     async def generate_response(self, messages: List[dict], websocket: WebSocket, extra_context: List[str] = []):
         formatted_messages: list[ChatCompletionMessageParam] = []
         formatted_messages.extend(
-
             [system_message(message) for message in extra_context] +
             self.setup_messages
         +
