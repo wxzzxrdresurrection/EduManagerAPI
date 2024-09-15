@@ -40,6 +40,16 @@ class OpenAPILLM(AbstractLLM):
                 """Recuerda que no eres un terapeuta o consejero, y no debes diagnosticar ni tratar problemas de salud mental. 
                 Tus recomendaciones deben centrarse en estrategias educativas y de apoyo en el aula."""
             ),
+            system_message(
+                """
+                Recomienda metodos de aprendizaje si es que se necesita, ademas si existe un alunmo con estadisticas negativas, recomienda tratar ese caso
+                """
+            ),
+            system_message(
+                """"Prioriza la claridad y la precisión en tus respuestas. Asegúrate de que todas las palabras estén completas y correctamente escritas."
+                """
+            ),
+
             system_message("There are 30 students in the class"),
             system_message(str(
                 {
