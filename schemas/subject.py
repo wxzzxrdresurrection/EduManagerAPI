@@ -1,8 +1,23 @@
-def single_subject_schema(subject):
-    return {
-        "id": subject.id,
-        "name": subject.name,
-        "description": subject.description,
-        "created_at": subject.created_at,
-        "updated_at": subject.updated_at,
-    }
+from config.db import MongoConnection
+from bson import ObjectId
+from models.subject_model import Subject
+
+class SubjectSchema:
+    def __init__(self):
+        self.mongo = MongoConnection()
+        self.subjects = []
+
+    def get_subjects(self):
+        subjects = self.mongo.get_collection("subjects")
+        for subject in subjects:
+            subject['id'] = str(subject.pop('_id'))
+            self.subjects.append(Subject(**subject))
+        return self.subjects
+
+    def get_subject(self, subject_id):
+        subject = self.mongo.get_item_from_collection_by_id("subjects", ObjectId(subject_id))
+        return subject
+
+    def add_subject(self, subject):
+        data = self.mongo.insert_item_into_collection("subjects", subject.dict())
+        return data

@@ -39,3 +39,28 @@ class MongoConnection:
         except Exception as e:
             print(f"Error fetching collection {collection_name}: {e}")
             return None
+        
+    def get_item_from_collection_by_id(self, collection_name, item_id):
+        """Devuelve un item de una colección MongoDB por su id."""
+        try:
+            collection = self.db[collection_name]
+            item = collection.find_one({"_id": item_id})
+            if item:
+                item['id'] = str(item.pop('_id'))
+                return item
+            else:
+                print(f"Item {item_id} not found in collection {collection_name}")
+
+            return item 
+        except Exception as e:
+            print(f"Error fetching item {item_id} from collection {collection_name}: {e}")
+            return None
+        
+    def insert_item_into_collection(self, collection_name, item):
+        """Inserta un item en una colección MongoDB."""
+        try:
+            collection = self.db[collection_name]
+            return collection.insert_one(item)
+        except Exception as e:
+            print(f"Error inserting item into collection {collection_name}: {e}")
+            return None

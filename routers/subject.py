@@ -1,26 +1,29 @@
 from fastapi import APIRouter
 from models.subject_model import Subject
-from config.db import MongoConnection
+from schemas.subject import SubjectSchema
 
-subject = APIRouter()
+subjects = APIRouter()
 
-@subject.get("", response_model=dict)
+@subjects.get("", response_model=dict, status_code=200)
 async def get_all_subjects():
-    mongo_instance = MongoConnection()
-
-    # Probar la conexión a MongoDB
-    if mongo_instance.test_connection():
-        print("Conexión a MongoDB verificada.")
-    else:
-        print("Error al conectar a MongoDB.")
+    subjects = SubjectSchema().get_subjects()
     return {
-        "data": [],
+        "data": subjects,
         "message": "Subjects retrieved successfully"
     }
 
-@subject.get("/{subject_id}", response_model=Subject)
-async def get_subject(subject_id: int):
+@subjects.get("/{subject_id}", response_model=dict, status_code=200)    
+async def get_subject(subject_id: str):
+    subject = SubjectSchema().get_subject(subject_id)
     return {
-        "data": [],
+        "data": subject,
         "message": "Subject retrieved successfully"
+    }
+
+@subjects.post("", response_model=dict,status_code=201)
+async def add_subject(subject: Subject):
+    new_subject = SubjectSchema().add_subject(subject)
+    return {
+        "data": new_subject,
+        "message": "Subject added successfully"
     }
